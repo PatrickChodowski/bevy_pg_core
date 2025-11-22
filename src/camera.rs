@@ -9,27 +9,11 @@ use bevy::ecs::message::MessageCursor;
 use bevy::input::mouse::MouseMotion;
 use bevy_enhanced_input::prelude::*;
 
-pub struct PGCoreCameraPlugin {
-    default_padding: Vec3,
-    default_speed:   f32
-}
-
-impl PGCoreCameraPlugin {
-    pub fn new(
-        default_padding: Vec3,
-        default_speed: f32
-    ) -> Self {
-        PGCoreCameraPlugin {
-            default_padding,
-            default_speed
-        }
-    }
-}
+pub struct PGCoreCameraPlugin;
 
 impl Plugin for PGCoreCameraPlugin {
     fn build(&self, app: &mut App) {
         app
-        .insert_resource(CameraSettings::new(self.default_padding, self.default_speed))
         .add_input_context::<FlyCamController>()
         .init_resource::<InputState>()
         .add_systems(Startup, spawn)
@@ -85,21 +69,6 @@ pub struct CameraModeChanged{
     mode: CameraMode
 }
 
-#[derive(Resource)]
-pub struct CameraSettings {
-    pub padding: Vec3,
-    pub speed:   f32
-}
-impl CameraSettings {
-    pub fn new(padding: Vec3, speed: f32) -> Self {
-        CameraSettings {
-            padding, 
-            speed
-        }
-    }
-}
-
-
 #[derive(Component)]
 pub struct MainCamera {
     start: Vec3,
@@ -116,10 +85,11 @@ impl MainCamera {
         player_loc:       Vec3,
         camera_entity:    Entity,
         camera_transform: &mut Transform,
-        settings:         &Res<CameraSettings>   
+        padding: Vec3,
+        speed: f32
     ) {
-        self.padding = settings.padding;
-        self.speed = settings.speed;
+        self.padding = padding;
+        self.speed = speed;
         match self.mode {
             CameraMode::Dev => {
                 self.set_dev(commands, camera_entity);

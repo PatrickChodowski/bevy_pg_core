@@ -23,10 +23,16 @@ impl Plugin for PGCoreAssetsPlugin {
 //     pub scenes:   HashMap<String, Handle<SceneData>>
 // }
 
-#[derive(Resource)]
-pub struct ConfigHandles<A: Asset> {
-    pub handles: Vec<Handle<A>>
-}
+// #[derive(Resource)]
+// pub struct ConfigHandles<A: Asset> {
+//     pub handles: Vec<Handle<A>>
+// }
+
+
+// #[derive(Resource)]
+// pub struct ConfigHandles {
+//     pub handles: Vec<AssetId<>
+// }
 
 
 fn init_configs(
