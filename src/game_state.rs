@@ -31,8 +31,10 @@ pub enum GameState {
 #[states(scoped_entities)]
 pub enum GameStateInit {
     #[default]
+    Init,
     Configs, // beginning of the game, reading settings
     Assets, // beginning of the game, reading assets
+    Loaded
 }
 
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash, SubStates)]
