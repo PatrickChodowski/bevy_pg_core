@@ -9,6 +9,8 @@ use bevy::ecs::message::MessageCursor;
 use bevy::input::mouse::MouseMotion;
 use bevy_enhanced_input::prelude::*;
 
+use crate::prelude::GameState;
+
 pub struct PGCoreCameraPlugin;
 
 impl Plugin for PGCoreCameraPlugin {
@@ -20,9 +22,17 @@ impl Plugin for PGCoreCameraPlugin {
         .add_observer(move_camera_xz)
         .add_observer(move_camera_y)
         .add_observer(pan_look)
+        .add_systems(OnExit(GameState::Play), reset_camera)
         ;
     }
 }
+
+fn reset_camera(
+    mut camera: Single<&mut MainCamera>
+){
+    camera.reset();
+}
+
 
 fn spawn(
     mut commands: Commands,
