@@ -2,6 +2,7 @@ mod assets;
 mod camera;
 mod game_state;
 mod player;
+mod pointer;
 mod utils;
 
 pub mod prelude {
@@ -11,4 +12,5 @@ pub mod prelude {
     pub use crate::game_state::{PGCoreStatesPlugin, GameState, GameStatePlay, GameStateInit, GameStateTransition};
     pub use crate::player::Player;
     pub use crate::utils::AABB;
+    pub use crate::pointer::{Hoverables, PointerData};
 }
