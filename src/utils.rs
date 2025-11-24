@@ -36,3 +36,21 @@ impl AABB {
     }
 
 }
+
+
+
+
+pub fn rotate_point_2d(p: &Vec3, origin: &Vec2, angle_y: f32) -> Vec3 {
+
+    // translate point back to origin:
+    let p2x = p.x - origin.x;
+    let p2z = p.z - origin.y;
+  
+    let x_new = p2x * angle_y.cos() - p2z * angle_y.sin();
+    let z_new = p2x * angle_y.sin() + p2z * angle_y.cos();
+    
+    // translate point back:
+    let p3x = x_new + origin.x;
+    let p3z = z_new + origin.y;
+    return Vec3::new(p3x, p.y, p3z);
+  }
