@@ -3,8 +3,8 @@ use bevy::prelude::*;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Hoverables {
-    Navmesh{traversable: bool, jumpable: bool},
-    Target(Entity),
+    Navmesh(Entity), // Navmesh entity
+    Target(Entity),  // Some object entity
     UI,
     // Other, Non walking target entity
     None
@@ -18,7 +18,6 @@ pub struct PointerData {
     pub hoverable:               Hoverables
 }
 
-
 impl PointerData {
     pub fn new() -> PointerData {
         return Self {
@@ -31,9 +30,15 @@ impl PointerData {
     pub fn reset(&mut self) {
         *self = PointerData::new();
     }
-
     pub fn get_hover_entity(&self) -> Option<Entity> {
         if let Hoverables::Target(entity) = self.hoverable {
+            return Some(entity)
+        } else {
+            return None;
+        }
+    }
+    pub fn get_hover_navmesh(&self) -> Option<Entity> {
+        if let Hoverables::Navmesh(entity) = self.hoverable {
             return Some(entity)
         } else {
             return None;
