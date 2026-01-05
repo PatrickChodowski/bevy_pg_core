@@ -22,6 +22,14 @@ impl Default for AABB {
 }
 
 impl AABB {
+    pub fn new_min_max() -> Self {
+        AABB {
+            min_x: f32::MAX,
+            min_z: f32::MAX,
+            max_x: f32::MIN,
+            max_z: f32::MIN
+        }
+    }
     pub fn from_loc_dims(loc: Vec2, dim: Vec2) -> AABB {
         AABB {
             min_x: loc.x - dim.x / 2.0,
