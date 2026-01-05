@@ -43,6 +43,47 @@ impl AABB {
         loc.x >= self.min_x && loc.x <= self.max_x && loc.y >= self.min_z && loc.y <= self.max_z
     }
 
+    pub fn split(&self, n: usize) -> Vec<AABB> {
+        if n == 0 {
+            return vec![];
+        }
+        
+        let grid_size = (n as f32).sqrt().ceil() as usize;
+        let mut result = Vec::with_capacity(n);
+        
+        let width = self.max_x - self.min_x;
+        let height = self.max_z - self.min_z;
+        
+        let cell_width = width / grid_size as f32;
+        let cell_height = height / grid_size as f32;
+        
+        for i in 0..grid_size {
+            for j in 0..grid_size {
+                if result.len() >= n {
+                    break;
+                }
+                
+                let min_x = self.min_x + j as f32 * cell_width;
+                let max_x = min_x + cell_width;
+                let min_z = self.min_z + i as f32 * cell_height;
+                let max_z = min_z + cell_height;
+                
+                result.push(AABB {
+                    min_x,
+                    max_x,
+                    min_z,
+                    max_z,
+                });
+            }
+            
+            if result.len() >= n {
+                break;
+            }
+        }
+        
+        result
+    }
+
 }
 
 
