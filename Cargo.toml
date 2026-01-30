@@ -1,17 +1,17 @@
 [package]
 name = "bevy_pg_core"
-version = "0.1.0"
+version = "1.18.0"
 edition = "2024"
 
 [dependencies]
-bevy = "0.17"
-bevy_enhanced_input = "0.20.1"
+bevy = "0.18"
+bevy_enhanced_input = "0.22.2"
 libm = "0.2.15"
 log = { version = "0.4", features = [
     "max_level_debug",
     "release_max_level_warn",
 ] }
-serde = "1.0.228"
+serde = "1.0"
 
 
 [lints.clippy]
