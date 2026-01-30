@@ -83,7 +83,7 @@ enum CameraMode {
 pub struct MainCamera {
     start: Vec3,
     sensitivity: f32,
-    // padding: Vec3,
+    padding: Vec3,
     speed:   f32,
     mode: CameraMode
 }
@@ -128,9 +128,9 @@ impl MainCamera {
         }
     }
 
-    // pub fn set_padding(&mut self, padding: Vec3){
-    //     self.padding = padding;
-    // }
+    pub fn set_padding(&mut self, padding: Vec3){
+        self.padding = padding;
+    }
 
     pub fn get_sensitivity(&self) -> f32 {
         self.sensitivity
@@ -193,7 +193,7 @@ impl Default for MainCamera {
             sensitivity: 0.0001,
             speed:  1.0,
             mode:   CameraMode::Player,
-            // padding: Vec3::new(210.0, 260.0, 210.0),
+            padding: Vec3::new(210.0, 260.0, 210.0),
 
         }
     }
