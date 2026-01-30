@@ -132,6 +132,10 @@ impl MainCamera {
         self.padding = padding;
     }
 
+    pub fn get_padding(&self) -> &Vec3{
+        &self.padding
+    }
+
     pub fn get_sensitivity(&self) -> f32 {
         self.sensitivity
     }
