@@ -259,7 +259,7 @@ pub fn fly_cam_controller() -> impl Bundle {
                 (
                     Action::<PanLook>::new(),
                     Down::default(),
-                    bindings![MouseButton::Middle]
+                    bindings![MouseButton::Right]
                 )
             ]
         )
@@ -279,7 +279,7 @@ fn pan_look(
     mut state:  ResMut<InputState>,
     camera:     Single<(&mut Transform, &mut MainCamera)>,
 ){
-    if buttons.pressed(MouseButton::Middle) {
+    if buttons.pressed(MouseButton::Right) {
         let delta_state = state.as_mut();
         let (mut camera_transform, main_camera) = camera.into_inner();
         for ev in delta_state.reader_motion.read(&motion) {
