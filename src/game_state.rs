@@ -43,6 +43,7 @@ pub enum GameStateInit {
 pub enum GameStatePlay {
     #[default]
     Running,
+    Scenario,
     Editor,
     Paused,
 }
