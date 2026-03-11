@@ -67,7 +67,7 @@ fn spawn(
 }
 
 
-#[derive(Default, Eq, PartialEq, Clone, Copy)]
+#[derive(Default, Eq, PartialEq, Clone, Copy, Reflect)]
 enum CameraMode {
     Dev,
     #[default]
@@ -79,7 +79,8 @@ enum CameraMode {
 //     mode: CameraMode
 // }
 
-#[derive(Component)]
+#[derive(Component, Reflect)]
+#[reflect(Component)]
 pub struct MainCamera {
     start: Vec3,
     sensitivity: f32,
