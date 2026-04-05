@@ -50,7 +50,7 @@ fn spawn(
             //     focal_distance: 25.0,
             //     ..default()
             // },
-            Projection::Perspective(PerspectiveProjection{far: 1000.0, ..default()}),
+            Projection::Perspective(PerspectiveProjection{far: 100.0, ..default()}),
             start_camera_transform,
             camera,
             Bloom::default(),
@@ -194,11 +194,11 @@ impl MainCamera {
 impl Default for MainCamera {
     fn default() -> Self {
         MainCamera {
-            start: Vec3::new(0.0, 600.0, 0.0),
+            start: Vec3::new(0.0, 60.0, 0.0),
             sensitivity: 0.0001,
-            speed:  1.0,
+            speed:  0.1,
             mode:   CameraMode::Player,
-            padding: Vec3::new(210.0, 260.0, 210.0),
+            padding: Vec3::new(21.0, 26.0, 21.0),
 
         }
     }
