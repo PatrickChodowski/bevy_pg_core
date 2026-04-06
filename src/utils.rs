@@ -43,6 +43,12 @@ impl AABB {
         loc.x >= self.min_x && loc.x <= self.max_x && loc.y >= self.min_z && loc.y <= self.max_z
     }
 
+    pub fn intercepts(&self, other: &AABB) -> bool {
+        let x_overlap = self.min_x <= other.max_x && self.max_x >= other.min_x;
+        let z_overlap = self.min_z <= other.max_z && self.max_z >= other.min_z;
+        x_overlap && z_overlap
+    }
+
     pub fn split(&self, n: usize) -> Vec<AABB> {
         if n == 0 {
             return vec![];
