@@ -1,9 +1,10 @@
 use bevy::prelude::{Component, Reflect};
 use bevy::math::Vec2;
 use std::cmp::Ordering;
+use serde::{Serialize, Deserialize};
 
 
-#[derive(Hash, Debug, Eq, PartialEq, Copy, Clone, Reflect)]
+#[derive(Hash, Debug, Eq, PartialEq, Copy, Clone, Reflect, Serialize, Deserialize)]
 
 pub struct Tile {
     pub x: usize,
