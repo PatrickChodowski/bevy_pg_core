@@ -1,6 +1,6 @@
 use bevy::ecs::component::Component;
 use bevy::reflect::Reflect;
-use bevy::math::Vec3;
+use bevy::math::{Vec3, Vec2};
 use std::cmp::Ordering;
 use serde::{Deserialize, Serialize};
 
