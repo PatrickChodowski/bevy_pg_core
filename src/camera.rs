@@ -196,7 +196,7 @@ impl Default for MainCamera {
         MainCamera {
             start: Vec3::new(0.0, 60.0, 0.0),
             sensitivity: 0.0001,
-            speed:  1.0,
+            speed:  50.0,
             mode:   CameraMode::Player,
             padding: Vec3::new(21.0, 26.0, 21.0),
 
