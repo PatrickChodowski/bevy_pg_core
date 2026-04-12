@@ -1,11 +1,13 @@
-use bevy::prelude::{Component, Reflect};
+use bevy::ecs::component::Component;
+use bevy::reflect::Reflect;
 use bevy::math::Vec2;
 use std::cmp::Ordering;
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
+
 
 
 #[derive(Hash, Debug, Eq, PartialEq, Copy, Clone, Reflect, Serialize, Deserialize)]
-
+#[serde(into = "String", try_from = "String")]
 pub struct Tile {
     pub x: usize,
     pub y: usize
@@ -38,6 +40,31 @@ impl PartialOrd for Tile {
         Some(self.cmp(other))
     }
 }
+
+impl From<Tile> for String {
+    fn from(tile: Tile) -> String {
+        format!("{},{}", tile.x, tile.y)
+    }
+}
+
+impl TryFrom<String> for Tile {
+    type Error = String;
+
+    fn try_from(s: String) -> Result<Self, Self::Error> {
+        // Split the string at the comma
+        let (x_str, y_str) = s
+            .split_once(',')
+            .ok_or_else(|| format!("Expected format 'x,y', found '{}'", s))?;
+
+        // Parse both sides into usize
+        let x = x_str.parse::<usize>().map_err(|_| format!("Invalid x coordinate in '{}'", s))?;
+        let y = y_str.parse::<usize>().map_err(|_| format!("Invalid y coordinate in '{}'", s))?;
+
+        Ok(Tile { x, y })
+    }
+}
+
+
 
 #[derive(Component, Reflect, Debug)]
 pub struct TerrainChunk {
