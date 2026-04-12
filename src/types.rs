@@ -68,9 +68,8 @@ impl TryFrom<String> for Tile {
 
 #[derive(Component, Reflect, Debug)]
 pub struct TerrainChunk {
-    pub loc:  Vec2,
+    pub loc:  Vec3,
     pub tile: Tile,
     pub dims: Vec2,
-    pub map_name: String,
-    pub chunk_id: String,
+    pub name: String
 }
