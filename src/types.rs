@@ -1,6 +1,6 @@
 use bevy::ecs::component::Component;
 use bevy::reflect::Reflect;
-use bevy::math::Vec2;
+use bevy::math::Vec3;
 use std::cmp::Ordering;
 use serde::{Deserialize, Serialize};
 
@@ -63,8 +63,6 @@ impl TryFrom<String> for Tile {
         Ok(Tile { x, y })
     }
 }
-
-
 
 #[derive(Component, Reflect, Debug)]
 pub struct TerrainChunk {
