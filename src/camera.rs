@@ -38,8 +38,9 @@ fn spawn(
     mut commands: Commands,
     mut state:    ResMut<InputState>, 
 ) {
-    let camera = MainCamera::default();
-    let start_camera_transform = Transform::from_translation(camera.start);
+    let main_camera = MainCamera::default();
+    let mut start_camera_transform = Transform::from_translation(main_camera.start);
+    start_camera_transform.look_at(main_camera.start_look_at, Vec3::Y);
     commands.spawn((
             Camera3d::default(),
             // Tonemapping::None,
@@ -52,7 +53,7 @@ fn spawn(
             // },
             Projection::Perspective(PerspectiveProjection{far: 100.0, ..default()}),
             start_camera_transform,
-            camera,
+            main_camera,
             Bloom::default(),
             fly_cam_controller(),
             ContextActivity::<FlyCamController>::INACTIVE
@@ -83,6 +84,7 @@ enum CameraMode {
 #[reflect(Component)]
 pub struct MainCamera {
     start: Vec3,
+    start_look_at: Vec3,
     sensitivity: f32,
     padding: Vec3,
     speed:   f32,
@@ -195,6 +197,7 @@ impl Default for MainCamera {
     fn default() -> Self {
         MainCamera {
             start: Vec3::new(0.0, 60.0, 0.0),
+            start_look_at: Vec3::ZERO,
             sensitivity: 0.0001,
             speed:  50.0,
             mode:   CameraMode::Player,
