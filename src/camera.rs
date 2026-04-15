@@ -196,7 +196,7 @@ impl MainCamera {
 impl Default for MainCamera {
     fn default() -> Self {
         MainCamera {
-            start: Vec3::new(0.0, 60.0, 0.0),
+            start: Vec3::new(10.0, 60.0, 10.0),
             start_look_at: Vec3::ZERO,
             sensitivity: 0.0001,
             speed:  50.0,
