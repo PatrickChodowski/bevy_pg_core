@@ -71,3 +71,10 @@ pub struct TerrainChunk {
     pub dims: Vec2,
     pub name: String
 }
+
+
+#[derive(Component, Debug, Reflect)]
+
+pub struct WaterChunk{
+    pub dims: Vec2
+}
