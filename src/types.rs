@@ -66,10 +66,11 @@ impl TryFrom<String> for Tile {
 
 #[derive(Component, Reflect, Debug)]
 pub struct TerrainChunk {
-    pub loc:  Vec3,
-    pub tile: Tile,
-    pub dims: Vec2,
-    pub name: String
+    pub dims: Vec2
+    // pub loc:  Vec3,
+    // pub tile: Tile,
+    // pub dims: Vec2,
+    // pub name: String
 }
 
 
