@@ -77,5 +77,6 @@ pub struct TerrainChunk {
 #[derive(Component, Debug, Reflect)]
 
 pub struct WaterChunk{
-    pub dims: Vec2
+    pub dims: Vec2,
+    pub just_spawned: bool // Jesus christ, to not update dims on the very first spawn ehh
 }
