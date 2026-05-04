@@ -80,3 +80,11 @@ pub struct WaterChunk{
     pub dims: Vec2,
     pub just_spawned: bool // Jesus christ, to not update dims on the very first spawn ehh
 }
+
+#[derive(Component, Clone, Debug, Serialize, Deserialize)]
+pub enum EditorAsset {
+    Asset(String),
+    Spawner (String),
+    Marker(String),
+    Water
+}
