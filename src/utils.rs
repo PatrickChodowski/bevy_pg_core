@@ -90,6 +90,14 @@ impl AABB {
         result
     }
 
+    pub fn from_vertices(v: &Vec<Vec3>) -> Self {
+        let min_x = v.iter().map(|v| v.x).fold(f32::INFINITY, f32::min);
+        let max_x = v.iter().map(|v| v.x).fold(f32::NEG_INFINITY, f32::max);
+        let min_z = v.iter().map(|v| v.z).fold(f32::INFINITY, f32::min);
+        let max_z = v.iter().map(|v| v.z).fold(f32::NEG_INFINITY, f32::max);
+
+        return AABB { min_x, max_x, min_z, max_z };
+    }
 }
 
 
