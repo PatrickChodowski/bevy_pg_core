@@ -16,7 +16,7 @@ impl Plugin for PGCoreStatesPlugin {
 
 
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash, States, SystemSet, Serialize, Deserialize)]
-#[states(scoped_entities)]
+// #[states(scoped_entities)]
 pub enum GameState {
     #[default]
     Init,
@@ -28,7 +28,7 @@ pub enum GameState {
 
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash, SubStates)]
 #[source(GameState = GameState::Init)]
-#[states(scoped_entities)]
+// #[states(scoped_entities)]
 pub enum GameStateInit {
     #[default]
     Init,
@@ -39,18 +39,17 @@ pub enum GameStateInit {
 
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash, SubStates)]
 #[source(GameState = GameState::Play)]
-#[states(scoped_entities)]
+// #[states(scoped_entities)]
 pub enum GameStatePlay {
     #[default]
     Running,
     Scenario,
-    Editor,
     Paused,
 }
 
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash, SubStates)]
 #[source(GameState = GameState::Transition)]
-#[states(scoped_entities)]
+// #[states(scoped_entities)]
 pub enum GameStateTransition {
     #[default]
     UnloadScene,
