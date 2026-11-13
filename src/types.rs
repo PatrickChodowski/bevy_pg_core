@@ -84,7 +84,18 @@ pub struct WaterChunk{
 #[derive(Component, Clone, Debug, Serialize, Deserialize)]
 pub enum EditorAsset {
     Scene(String),
-    Spawner (String),
+    Spawner(String),
     Marker(String),
     Water
+}
+
+impl EditorAsset {
+    pub fn name(&self) -> String {
+        match &self {
+            EditorAsset::Scene(name) => {return name.to_string()}
+            EditorAsset::Spawner(name) => {return name.to_string()}
+            EditorAsset::Marker(name) => {return name.to_string()}
+            EditorAsset::Water => {return String::from("water")}
+        }
+    }
 }
