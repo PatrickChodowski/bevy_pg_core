@@ -83,7 +83,7 @@ pub struct WaterChunk{
 
 #[derive(Component, Clone, Debug, Serialize, Deserialize)]
 pub enum EditorAsset {
-    Asset(String),
+    Scene(String),
     Spawner (String),
     Marker(String),
     Water
