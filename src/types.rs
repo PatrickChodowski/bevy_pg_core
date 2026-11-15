@@ -74,7 +74,7 @@ pub struct TerrainChunk {
 }
 
 impl TerrainChunk {
-    fn new(dims: Vec2) -> Self {
+    pub fn new(dims: Vec2) -> Self {
         TerrainChunk{dims}
     }
 }
