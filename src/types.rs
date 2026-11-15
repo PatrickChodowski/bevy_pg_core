@@ -64,13 +64,25 @@ impl TryFrom<String> for Tile {
     }
 }
 
-#[derive(Component, Reflect, Debug)]
+#[derive(Component, Reflect, Debug, Clone)]
 pub struct TerrainChunk {
     pub dims: Vec2
     // pub loc:  Vec3,
     // pub tile: Tile,
     // pub dims: Vec2,
     // pub name: String
+}
+
+impl TerrainChunk {
+    fn new(dims: Vec2) -> Self {
+        TerrainChunk{dims}
+    }
+}
+
+impl Default for TerrainChunk {
+    fn default() -> Self {
+        TerrainChunk{dims: Vec2::ZERO}
+    }
 }
 
 
