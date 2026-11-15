@@ -74,12 +74,22 @@ pub struct TerrainChunk {
 }
 
 
-#[derive(Component, Debug, Reflect)]
+#[derive(Component, Debug, Reflect, Clone)]
 
 pub struct WaterChunk{
     pub dims: Vec2,
     pub just_spawned: bool // Jesus christ, to not update dims on the very first spawn ehh
 }
+
+impl Default for WaterChunk {
+    fn default() -> Self {
+        WaterChunk {
+            dims: Vec2::ONE,
+            just_spawned: true
+        }
+    }
+}
+
 
 #[derive(Component, Clone, Debug, Serialize, Deserialize)]
 pub enum EditorAsset {
