@@ -121,3 +121,6 @@ impl EditorAsset {
         }
     }
 }
+
+#[derive(Component, Default, Clone)]
+pub struct MainCamera;

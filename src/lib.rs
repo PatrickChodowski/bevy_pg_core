@@ -11,5 +11,5 @@ pub mod prelude {
     pub use crate::player::Player;
     pub use crate::utils::{AABB, rotate_point_2d};
     pub use crate::pointer::{Hoverables, PointerData};
-    pub use crate::types::{TerrainChunk, WaterChunk, Tile, EditorAsset};
+    pub use crate::types::{TerrainChunk, WaterChunk, Tile, EditorAsset, MainCamera};
 }
