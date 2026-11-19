@@ -4,7 +4,7 @@ version = "1.20.0"
 edition = "2024"
 
 [dependencies]
-bevy = {version="0.20", features=["bevy_asset", "bevy_state", "bevy_camera", "bevy_log", "free_camera"], default-features=false}
+bevy = {version="0.20", features=["bevy_asset", "bevy_state", "bevy_camera", "bevy_log", "bevy_camera_controller", "free_camera"], default-features=false}
 libm = "0.2.16"
 log = { version = "0.4", features = [
     "max_level_debug",
