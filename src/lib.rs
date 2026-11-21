@@ -1,5 +1,4 @@
 mod assets;
-mod camera;
 mod game_state;
 mod player;
 mod pointer;
@@ -13,5 +12,5 @@ pub mod prelude {
     pub use crate::utils::{AABB, rotate_point_2d};
     pub use crate::pointer::{Hoverables, PointerData};
     pub use crate::types::{TerrainChunk, WaterChunk, Tile, EditorAsset};
-    pub use crate::camera::{MainCamera, PGCoreCameraPlugin, is_camera_player, is_camera_dev};
+    // pub use crate::camera::{MainCamera, PGCoreCameraPlugin, is_camera_player, is_camera_dev};
 }

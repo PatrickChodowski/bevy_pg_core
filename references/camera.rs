@@ -103,10 +103,10 @@ impl MainCamera {
         player_loc:       Vec3,
         camera_entity:    Entity,
         camera_transform: &mut Transform,
-        // padding: Vec3,
+        padding: Vec3,
         speed: f32
     ) {
-        // self.padding = padding;
+        self.padding = padding;
         self.speed = speed;
         match self.mode {
             CameraMode::Dev => {
@@ -134,6 +134,10 @@ impl MainCamera {
                 self.set_player(commands, camera_entity, camera_transform, player_loc);
             }
         }
+    }
+
+    pub fn set_speed(&mut self, padding: Vec3){
+        self.padding = padding;
     }
 
     pub fn set_padding(&mut self, padding: Vec3){
@@ -167,9 +171,9 @@ impl MainCamera {
         camera_transform: &mut Transform,
         player_loc: Vec3
     ) {
-        // self.start = player_loc + self.padding;
-        // camera_transform.translation = self.start;
-        // camera_transform.look_at(player_loc, Vec3::Y);
+        self.start = player_loc + self.padding;
+        camera_transform.translation = self.start;
+        camera_transform.look_at(player_loc, Vec3::Y);
         self.mode = CameraMode::Player;
         commands.trigger(CameraModeChanged{mode: self.mode});
     }
